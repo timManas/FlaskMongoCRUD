@@ -27,10 +27,9 @@ def homePage():
 def createEntry():
     document = {"Name" : "Tina", "Age": "None of Yo Bizness", "Occupation":"SoundCloudRapper"}
     id = collection.insert_one(document).inserted_id
-    
     return ("<h1>Id: " + str(id) + "</h1>")
 
-    # Working  
+    # Ex2: Working Code
     # db = client.get_database('flask_mongodb_atlas')
     # user_collection = pymongo.collection.Collection(db, 'user_collection')
     # db.db.collection.insert_one({"name": "Timmmm79"})
@@ -40,7 +39,13 @@ def createEntry():
 # Read
 @app.route("/Read")
 def fetchEntry():
-    return
+    obj = collection.find_one({"Name": "Tina"})     # Returns Object
+    print ("Find_one: " + str(obj) + "            | Find Age:" + str(obj["Age"]))
+
+    obj = collection.find({"company": "Quincy Inc"})     # Returns Cursor
+    print ("Find: " + str(obj))
+
+    return "Found Element"
 
 
 # Update
@@ -72,6 +77,9 @@ How to activate venv ?
 . venv/bin/activate
 
 
+Port Already in use ? Kill it with this command:
+lsof -i:8000
+kill $(lsof -t -i:8000)
 
 Notes
 1. The App configuration MUST be defined globally
