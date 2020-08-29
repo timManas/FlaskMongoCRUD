@@ -52,17 +52,23 @@ def fetchEntry():
 @app.route("/Update")
 def updateEntry():
     obj = collection.update_one({"Name" : "Tony"}, {"$set": {"Name" : "Ulyses"}})     # Finds the first occurences and replaces
-    obj = collection.update_many({"Name" : "Tina"}, {"$set": {"Name" : "Timmm"}})     # Finds All occurences and replaces All of them
-
     print ("Update_one: " + str(obj))
 
-
+    obj = collection.update_many({"Name" : "Tina"}, {"$set": {"Name" : "Timmm"}})     # Finds All occurences and replaces All of them
+    print ("Update_many: " + str(obj))
+    
     return "Replaced Element"
 
 
 # Delete
 @app.route("/Delete")
 def deleteEntry():
+    obj = collection.delete_one({"Name": "Ulyses"})         # Deletes one entry with Ulyses
+    print ("Delete_one: " + str(obj))
+
+    obj = collection.delete_many({"Name": "Timmm"})         # Deletes many entry
+    print ("Delete_many: " + str(obj))
+
     return "Deleted Element"
 
 
