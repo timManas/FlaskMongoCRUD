@@ -51,13 +51,19 @@ def fetchEntry():
 # Update
 @app.route("/Update")
 def updateEntry():
-    return
+    obj = collection.update_one({"Name" : "Tony"}, {"$set": {"Name" : "Ulyses"}})     # Finds the first occurences and replaces
+    obj = collection.update_many({"Name" : "Tina"}, {"$set": {"Name" : "Timmm"}})     # Finds All occurences and replaces All of them
+
+    print ("Update_one: " + str(obj))
+
+
+    return "Replaced Element"
 
 
 # Delete
 @app.route("/Delete")
 def deleteEntry():
-    return
+    return "Deleted Element"
 
 
 if __name__ == "__main__":
