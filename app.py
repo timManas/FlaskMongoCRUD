@@ -93,6 +93,10 @@ Port Already in use ? Kill it with this command:
 lsof -i:8000
 kill $(lsof -t -i:8000)
 
+How to Run ?
+Go to Folder of this project and type in
+pythong3 app.py
+
 Notes
 1. The App configuration MUST be defined globally
 
